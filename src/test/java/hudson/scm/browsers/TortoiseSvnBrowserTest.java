@@ -50,7 +50,7 @@ public class TortoiseSvnBrowserTest {
 		// Doesn't matter that it's a stub implementation, we just need to get rid of the MalformedURLException.
 		// Not a real test, more meant to document how this needs to be done.
 		new URL(null, "tsvncmd:command:diff?path:https://svnserver/svn/reponame/trunk/foo/bar.baz?startrev=5?endrev=6", 
-				new hudson.scm.browsers.tsvncmd.Handler());
+				new TortoiseSvnBrowser.Handler());
 	}
 
 	@Test

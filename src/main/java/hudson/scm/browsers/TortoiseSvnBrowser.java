@@ -10,7 +10,11 @@ import hudson.scm.browsers.tsvncmd.Handler;
 import hudson.Extension;
 
 import java.io.IOException;
+
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLStreamHandler;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -148,5 +152,13 @@ public class TortoiseSvnBrowser extends SubversionRepositoryBrowser
             return null;
         String urlString = "tsvncmd:command:diff?path:" + repoUrl + "?startrev:" + (revision-1) + "?endrev:" + revision;
         return new URL(null, urlString, new Handler());
+    }
+
+    /* This doesn't actually do anything, just needs to workaround MalformedURLException: unknown protocol: tsvncmd */
+    /* package */ static class Handler extends URLStreamHandler {
+        @Override
+        protected URLConnection openConnection(URL u) throws IOException {
+            throw new IOException("not implemented!");
+        }
     }
 }
