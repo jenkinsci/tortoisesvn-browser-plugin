@@ -1,5 +1,5 @@
-Jenkins TortoiseSVN Plugin
-==========================
+Jenkins TortoiseSVN Browser Plugin
+==================================
 
 This plugin adds a *TortoiseSVN* option to the list of Subversion repository browsers. Projects configured to use this browser will then display links on `/changes` web pages that open a TortoiseSVN log or diff viewer.
 
