@@ -6,7 +6,6 @@ import hudson.scm.RepositoryBrowser;
 import hudson.scm.SubversionChangeLogSet;
 import hudson.scm.SubversionChangeLogSet.RevisionInfo;
 import hudson.scm.SubversionRepositoryBrowser;
-import hudson.scm.browsers.tsvncmd.Handler;
 import hudson.Extension;
 
 import java.io.IOException;
@@ -109,10 +108,10 @@ public class TortoiseSvnBrowser extends SubversionRepositoryBrowser
         }
 
         int revision = path.getLogEntry().getRevision();
-        String file = path.getPath();
+        String file = path.getValue();
         SubversionChangeLogSet cls = path.getLogEntry().getParent();
 
-        String repoUrl = determineUrlFromRevisionInfoListAndRevisionAndPath(cls.getRevisions(), revision, path.getPath());
+        String repoUrl = determineUrlFromRevisionInfoListAndRevisionAndPath(cls.getRevisions(), revision, path.getValue());
         if (repoUrl == null)
             /* If the file is not part of any module location of this project at the time of the build, no link is shown.
                This is a feature, not a bug. */
@@ -127,10 +126,10 @@ public class TortoiseSvnBrowser extends SubversionRepositoryBrowser
      */    
     public URL getFileLink(SubversionChangeLogSet.Path path) throws IOException {
         int revision = path.getLogEntry().getRevision();
-        String file = path.getPath();
+        String file = path.getValue();
         SubversionChangeLogSet cls = path.getLogEntry().getParent();
 
-        String repoUrl = determineUrlFromRevisionInfoListAndRevisionAndPath(cls.getRevisions(), revision, path.getPath());
+        String repoUrl = determineUrlFromRevisionInfoListAndRevisionAndPath(cls.getRevisions(), revision, path.getValue());
         if (repoUrl == null)
             /* If the file is not part of any module location of this project at the time of the build, no link is shown.
                This is a feature, not a bug. */
